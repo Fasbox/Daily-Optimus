@@ -1,10 +1,13 @@
 using System.Runtime.InteropServices;
+using TrackerUI.DataBase;
 
 namespace TrackerUI
 {
     public partial class PanelPrincipalForm : Form
     {
+        private ClientDatabaseService _ClientDatabaseService;
         [DllImport("Gdi32.dll", EntryPoint = "CreateRoundRectRgn")]
+
 
         private static extern IntPtr CreateRoundRectRgn
     (
@@ -16,9 +19,12 @@ namespace TrackerUI
         int nHeightEllipse
     );
 
+        private string _UserName;
+
         public PanelPrincipalForm()
         {
             InitializeComponent();
+            _ClientDatabaseService = new ClientDatabaseService();
             Region = System.Drawing.Region.FromHrgn(CreateRoundRectRgn(0, 0, Width, Height, 25, 25));
             panelNav.Height = buttonPanelEjecutables.Height;
             panelNav.Top = buttonPanelEjecutables.Top;
@@ -26,6 +32,13 @@ namespace TrackerUI
             buttonPanelEjecutables.BackColor = Color.FromArgb(46, 131, 242);
         }
 
+        public void PanelPrincipal_Load(object sender, EventArgs e)
+        {
+            //string userName = LoggedUser.UserName;
+            //labelUsername.Text = UserName;
+        }
+
+        // Función para cambiar entre formularios en la aplicación
         public void cargar_Form(object Form)
         {
             if (this.panelMain.Controls.Count > 0)
@@ -40,7 +53,7 @@ namespace TrackerUI
 
         private void buttonClose_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Environment.Exit(Environment.ExitCode);
         }
 
         private void buttonClose_MouseHover(object sender, EventArgs e)
@@ -84,7 +97,7 @@ namespace TrackerUI
 
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Environment.Exit(Environment.ExitCode);
         }
 
         private void buttonPanelEjecutables_Click(object sender, EventArgs e)
