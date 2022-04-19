@@ -36,6 +36,8 @@ namespace TrackerUI.Interfaces_Inicio_de_Sesión
                     if (usuario != null)
                     {
                         new PanelPrincipalForm().Show();
+                        MessageBox.Show("Bienvenido a Daily Optimus, para agregar una aplicación dirígete a la Ejecutables, luego " +
+                            "dirígete a agregar aplicación, selecciona la que te interesa cargar y luego da click en generar", "Instrucciones Daily Optimus", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Hide();
                     }
                     else
