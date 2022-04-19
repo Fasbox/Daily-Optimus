@@ -12,34 +12,36 @@ namespace TrackerUI.DataBase
 {
     public class ClientDatabaseService
     {
-        private MongoCollectionBase<loggedUsers> LoggedUsers;
+        private MongoCollectionBase<LoggedUser> LoggedUsers;
         public ClientDatabaseService()
         {
+            var pass = "123";
             var databaseName = "daily_optimus";
-            var client = new MongoClient("mongodb+srv://Fasbox:123@cluster0.t2ush.mongodb.net/loggedUsers");
+            var collection = "loggedUser";
+            var settings = MongoClientSettings.FromConnectionString($"mongodb+srv://admin:{pass}@cluster0.t2ush.mongodb.net/{databaseName}?retryWrites=true&w=majority");
+            settings.ServerApi = new ServerApi(ServerApiVersion.V1);
+            var client = new MongoClient(settings);
             var database = client.GetDatabase(databaseName);
-
-
-            var loggedUsersDB = database.GetCollection<loggedUsers>("loggedUsers");
+            LoggedUsers = (MongoCollectionBase<LoggedUser>?)database.GetCollection<LoggedUser>("loggedUser");
         }
 
 
 
-        public void insertLoggedUser(loggedUsers nuevo)
+        public void insertLoggedUser(LoggedUser nuevo)
         {
             LoggedUsers.InsertOne(nuevo);
 
         }
 
-        public List<loggedUsers> obtenerLogggedUsers()
+        public List<LoggedUser> obtenerLogggedUsers()
         {
-            var filter = Builders<loggedUsers>.Filter.Empty;
+            var filter = Builders<LoggedUser>.Filter.Empty;
 
             var lista = LoggedUsers.Find(filter);
             return lista.ToList();
         }
 
-        public loggedUsers? ObtenerloggedUser(string password, string usuario)
+        public LoggedUser? ObtenerloggedUser(string password, string usuario)
         {
             var lista = LoggedUsers.Find(d => d.Password == password && d.UserName == usuario);
             if (lista.Count() == 0)
@@ -54,12 +56,12 @@ namespace TrackerUI.DataBase
             var lista = LoggedUsers.Find(d => d.UserName == usuario);
             return lista.ToList().Count != 0;
         }
-        public void UpdateLoggedUser(loggedUsers userToUpdate)
+        public void UpdateLoggedUser(LoggedUser userToUpdate)
         {
             this.LoggedUsers.ReplaceOne(d => d.Id == userToUpdate.Id, userToUpdate);
         }
 
-        public void DeleteLoggedUser(loggedUsers loggedUser)
+        public void DeleteLoggedUser(LoggedUser loggedUser)
         {
             this.LoggedUsers.DeleteOne(d => d.Id == loggedUser.Id);
         }

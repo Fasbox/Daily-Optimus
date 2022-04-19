@@ -53,6 +53,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TareasForm";
             this.Text = "Daily Optimus";
+            this.Load += new System.EventHandler(this.TareasForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

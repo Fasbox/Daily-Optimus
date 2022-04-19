@@ -9,7 +9,7 @@ using MongoDB.Driver;
 
 namespace TrackerUI.DataBase
 {
-    public class loggedUsers
+    public class LoggedUser
     {
         [BsonId]
         [BsonRepresentation(BsonType.ObjectId)]

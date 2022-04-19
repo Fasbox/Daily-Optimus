@@ -32,7 +32,7 @@ namespace TrackerUI.Interfaces_Inicio_de_Sesión
             {
                 if (_ClientDatabaseService.LoggedUserExist(nickName))
                 {
-                    loggedUsers usuario = _ClientDatabaseService.ObtenerloggedUser(contraseña, nickName);
+                    LoggedUser usuario = _ClientDatabaseService.ObtenerloggedUser(contraseña, nickName);
                     if (usuario != null)
                     {
                         new PanelPrincipalForm().Show();

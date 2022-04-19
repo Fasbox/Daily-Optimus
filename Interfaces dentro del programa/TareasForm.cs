@@ -16,5 +16,10 @@ namespace TrackerUI
         {
             InitializeComponent();
         }
+
+        private void TareasForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

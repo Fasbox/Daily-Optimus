@@ -47,7 +47,7 @@ namespace TrackerUI.Interfaces_Inicio_de_Sesión
                 }
                 else
                 {
-                    loggedUsers nuevoUsuario = new loggedUsers() { UserName = usuario, Email = email, Password = contraseña};
+                    LoggedUser nuevoUsuario = new LoggedUser() { UserName = usuario, Email = email, Password = contraseña};
                     _ClientDatabaseService.insertLoggedUser(nuevoUsuario);
                     MessageBox.Show("Se ha creado correctamente tu cuenta", "Registro exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
