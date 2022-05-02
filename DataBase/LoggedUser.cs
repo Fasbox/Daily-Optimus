@@ -9,6 +9,9 @@ using MongoDB.Driver;
 
 namespace TrackerUI.DataBase
 {
+    /// <summary>
+    /// Plantilla para hacer la conexión con la base de datos diciendole que debe de usar
+    /// </summary>
     public class LoggedUser
     {
         [BsonId]

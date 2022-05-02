@@ -21,6 +21,11 @@ namespace TrackerUI
 
         List<Aplicaciones> datos = new List<Aplicaciones>();
 
+        /// <summary>
+        /// Genere una lista con los datos de las aplicaciones ingresados
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonAgregar_Click(object sender, EventArgs e)
         {
             Aplicaciones ejecutable = new Aplicaciones();
@@ -39,7 +44,6 @@ namespace TrackerUI
                 ejecutable.nombre = filename;
                 ejecutable.ruta = strPath;
                 datos.Add(ejecutable);
-                //abrir.C = ejecutable.ruta;
             }
 
 
@@ -48,6 +52,12 @@ namespace TrackerUI
         Panel icono = new Panel();
         Label nombre = new Label();
         Label ruta = new Label();
+        /// <summary>
+        /// De la lista de datos ingresados, genera dentro del panel los botones para ejecutar las aplicaciones, organizando dependiendo de la ubicación
+        /// 5 en horizontal y 3 en vertical.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonGenerar_Click(object sender, EventArgs e)
         {
             int posX, posY;
@@ -116,6 +126,11 @@ namespace TrackerUI
             //nombre = Properties.Settings.Default.datos[i].nombre;
         }
 
+        /// <summary>
+        /// Método que ejecuta la aplicación dada
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ejecutar(object sender, EventArgs e)
         {
             
@@ -123,6 +138,11 @@ namespace TrackerUI
             Process.Start(FilePath);
         }
 
+        /// <summary>
+        /// método que guarda los datos para perdurar
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void EjecutablesForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             Properties.Settings.Default["nombre"] = nombre.Text;

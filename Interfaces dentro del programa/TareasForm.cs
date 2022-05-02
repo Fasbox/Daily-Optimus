@@ -22,6 +22,12 @@ namespace TrackerUI
 
         }
 
+        /// <summary>
+        /// Tenemos una lista de objetos en listbox, esta lista tiene indices, esos indices los llamamos en este método para modificarlos,
+        /// sino hay nada seleccionado tira el mensaje de error.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonEditar_Click(object sender, EventArgs e)
         {
             if (listBoxTareas.SelectedItems.Count > -1)
@@ -32,6 +38,11 @@ namespace TrackerUI
             richTextBoxTarea.Clear();
         }
 
+        /// <summary>
+        /// Agrega lo que esté dentro del textbox en la lista de listbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonAgregar_Click(object sender, EventArgs e)
         {
             listBoxTareas.Items.Add(richTextBoxTarea.Text);
@@ -39,6 +50,11 @@ namespace TrackerUI
 
         }
 
+        /// <summary>
+        /// Elimina en el ínidice indicado la tarea
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonEliminar_Click(object sender, EventArgs e)
         {
             listBoxTareas.Items.RemoveAt(listBoxTareas.SelectedIndex);
