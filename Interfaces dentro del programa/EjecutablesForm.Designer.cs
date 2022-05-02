@@ -110,6 +110,8 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "EjecutablesForm";
             this.Text = "Daily Optimus";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.EjecutablesForm_FormClosing);
+            this.Load += new System.EventHandler(this.EjecutablesForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

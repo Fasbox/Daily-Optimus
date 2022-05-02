@@ -111,12 +111,27 @@ namespace TrackerUI
 
         }
 
+        private void EjecutablesForm_Load(object sender, EventArgs e)
+        {
+            //nombre = Properties.Settings.Default.datos[i].nombre;
+        }
+
         private void ejecutar(object sender, EventArgs e)
         {
             
             string FilePath = ruta.Text;
             Process.Start(FilePath);
         }
+
+        private void EjecutablesForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            Properties.Settings.Default["nombre"] = nombre.Text;
+            Properties.Settings.Default["ruta"] = ruta.Text;
+
+            Properties.Settings.Default.Save();
+        }
+
+
     }
 
 }

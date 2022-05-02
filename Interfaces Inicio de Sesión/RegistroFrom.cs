@@ -11,6 +11,7 @@ using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Bson.Serialization.Attributes;
 using TrackerUI.DataBase;
+using System.Text.RegularExpressions;
 
 namespace TrackerUI.Interfaces_Inicio_de_Sesión
 {
@@ -84,6 +85,20 @@ namespace TrackerUI.Interfaces_Inicio_de_Sesión
         {
             new InicioSesionForm().Show();
             this.Hide();
+        }
+
+        private void textBoxEmail_Leave(object sender, EventArgs e)
+        {
+            string patternEmail = @"\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*";
+            if(Regex.IsMatch(textBoxEmail.Text, patternEmail))
+            {
+                errorProvider1.Clear();
+            }
+            else
+            {
+                errorProvider1.SetError(this.textBoxEmail, "Por favor ingresa una dirección de Email valida");
+                return;
+            }
         }
     }
 }

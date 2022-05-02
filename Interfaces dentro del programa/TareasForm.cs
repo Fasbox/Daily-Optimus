@@ -21,5 +21,27 @@ namespace TrackerUI
         {
 
         }
+
+        private void buttonEditar_Click(object sender, EventArgs e)
+        {
+            if (listBoxTareas.SelectedItems.Count > -1)
+                listBoxTareas.Items[listBoxTareas.SelectedIndex] = richTextBoxTarea.Text;
+            else
+                MessageBox.Show("Selecciona la tarea que deseas borrar");
+
+            richTextBoxTarea.Clear();
+        }
+
+        private void buttonAgregar_Click(object sender, EventArgs e)
+        {
+            listBoxTareas.Items.Add(richTextBoxTarea.Text);
+            richTextBoxTarea.Text = "";
+
+        }
+
+        private void buttonEliminar_Click(object sender, EventArgs e)
+        {
+            listBoxTareas.Items.RemoveAt(listBoxTareas.SelectedIndex);
+        }
     }
 }
