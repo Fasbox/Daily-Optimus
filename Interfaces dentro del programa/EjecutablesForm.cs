@@ -81,7 +81,7 @@ namespace TrackerUI
                 ruta = new Label();
                 cantidad++;
 
-                icono.BackgroundImage = System.Drawing.Image.FromFile("C:\\Users\\Fabian\\Desktop\\TrackerUI\\Resources\\Figurepng.png");
+                icono.BackgroundImage = System.Drawing.Image.FromFile("C:\\Users\\USUARIO\\Documents\\Proyecto de Aula\\Daily-Optimus\\Resources\\Figurepng.png");
                 icono.BackgroundImageLayout = ImageLayout.Zoom;
                 icono.TabIndex = i;
                 icono.Size = new Size(ancho, alto);
