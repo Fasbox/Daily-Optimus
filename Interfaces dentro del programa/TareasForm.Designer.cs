@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TareasForm));
             this.labelTareas = new System.Windows.Forms.Label();
-            this.labelInfoTareas = new System.Windows.Forms.Label();
             this.buttonAgregar = new System.Windows.Forms.Button();
             this.buttonEditar = new System.Windows.Forms.Button();
             this.buttonEliminar = new System.Windows.Forms.Button();
@@ -38,6 +37,7 @@
             this.richTextBoxTarea = new System.Windows.Forms.RichTextBox();
             this.labelNuevaTarea = new System.Windows.Forms.Label();
             this.labelNuevaTarea2 = new System.Windows.Forms.Label();
+            this.labelInfoTareas = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelTareas
@@ -50,17 +50,6 @@
             this.labelTareas.Size = new System.Drawing.Size(61, 16);
             this.labelTareas.TabIndex = 1;
             this.labelTareas.Text = "Tareas";
-            // 
-            // labelInfoTareas
-            // 
-            this.labelInfoTareas.AutoSize = true;
-            this.labelInfoTareas.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.labelInfoTareas.ForeColor = System.Drawing.Color.White;
-            this.labelInfoTareas.Location = new System.Drawing.Point(28, 49);
-            this.labelInfoTareas.Name = "labelInfoTareas";
-            this.labelInfoTareas.Size = new System.Drawing.Size(518, 22);
-            this.labelInfoTareas.TabIndex = 3;
-            this.labelInfoTareas.Text = "Aquí encontrarás las tareas que hayas agregado hasta el momento.\r\n";
             // 
             // buttonAgregar
             // 
@@ -152,6 +141,17 @@
             this.labelNuevaTarea2.TabIndex = 12;
             this.labelNuevaTarea2.Text = "Tarea:";
             // 
+            // labelInfoTareas
+            // 
+            this.labelInfoTareas.AutoSize = true;
+            this.labelInfoTareas.Font = new System.Drawing.Font("Trebuchet MS", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelInfoTareas.ForeColor = System.Drawing.Color.White;
+            this.labelInfoTareas.Location = new System.Drawing.Point(28, 49);
+            this.labelInfoTareas.Name = "labelInfoTareas";
+            this.labelInfoTareas.Size = new System.Drawing.Size(518, 22);
+            this.labelInfoTareas.TabIndex = 3;
+            this.labelInfoTareas.Text = "Aquí encontrarás las tareas que hayas agregado hasta el momento.\r\n";
+            // 
             // TareasForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -181,7 +181,6 @@
         #endregion
 
         private Label labelTareas;
-        private Label labelInfoTareas;
         private Button buttonAgregar;
         private Button buttonEditar;
         private Button buttonEliminar;
@@ -189,5 +188,6 @@
         private RichTextBox richTextBoxTarea;
         private Label labelNuevaTarea;
         private Label labelNuevaTarea2;
+        private Label labelInfoTareas;
     }
 }
