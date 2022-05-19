@@ -22,6 +22,8 @@ namespace TrackerUI
 
         private async void CargarNoticias()
         {
+            
+            
             string url = "https://cnnespanol.cnn.com/seccion/tecnologia/";
             string chrome = @"C:\Program Files\Google\Chrome\Application\chrome.exe";
 
@@ -60,7 +62,7 @@ namespace TrackerUI
 
         private void NoticiasForm_Load(object sender, EventArgs e)
         {
-            CargarNoticias ();
+            CargarNoticias();
         }
     }
 }
