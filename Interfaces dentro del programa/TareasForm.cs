@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace TrackerUI
 {
@@ -19,7 +20,8 @@ namespace TrackerUI
 
         private void TareasForm_Load(object sender, EventArgs e)
         {
-
+            //StreamReader cargarTareas = new StreamReader("Tareas.txt");
+            //listBoxTareas.Text = cargarTareas.ReadToEnd();
         }
 
         /// <summary>
@@ -30,7 +32,7 @@ namespace TrackerUI
         /// <param name="e"></param>
         private void buttonEditar_Click(object sender, EventArgs e)
         {
-            if (listBoxTareas.SelectedItems.Count > -1)
+            if (listBoxTareas.SelectedItems.Count > 0)
                 listBoxTareas.Items[listBoxTareas.SelectedIndex] = richTextBoxTarea.Text;
             else
                 MessageBox.Show("Selecciona la tarea que deseas borrar");
@@ -58,6 +60,13 @@ namespace TrackerUI
         private void buttonEliminar_Click(object sender, EventArgs e)
         {
             listBoxTareas.Items.RemoveAt(listBoxTareas.SelectedIndex);
+        }
+
+        private void TareasForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            TextWriter writerTareas = new StreamWriter("Tareas.txt");
+            writerTareas.WriteLine(listBoxTareas);
+            writerTareas.Close();
         }
     }
 }
