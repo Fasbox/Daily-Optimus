@@ -32,6 +32,7 @@
             this.labelNoticias = new System.Windows.Forms.Label();
             this.listBoxNews = new System.Windows.Forms.ListBox();
             this.labelInfoNews = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // labelNoticias
@@ -58,6 +59,8 @@
             this.listBoxNews.Name = "listBoxNews";
             this.listBoxNews.Size = new System.Drawing.Size(710, 418);
             this.listBoxNews.TabIndex = 2;
+            this.listBoxNews.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listBoxNews_MouseClick);
+            this.listBoxNews.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listBoxNews_MouseDoubleClick);
             // 
             // labelInfoNews
             // 
@@ -70,12 +73,22 @@
             this.labelInfoNews.TabIndex = 4;
             this.labelInfoNews.Text = "Noticias de tu interés.";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(337, 527);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(38, 15);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "label1";
+            // 
             // NoticiasForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(46)))), ((int)(((byte)(131)))), ((int)(((byte)(242)))));
             this.ClientSize = new System.Drawing.Size(800, 547);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.labelInfoNews);
             this.Controls.Add(this.listBoxNews);
             this.Controls.Add(this.labelNoticias);
@@ -94,5 +107,6 @@
         private Label labelNoticias;
         private ListBox listBoxNews;
         private Label labelInfoNews;
+        private Label label1;
     }
 }

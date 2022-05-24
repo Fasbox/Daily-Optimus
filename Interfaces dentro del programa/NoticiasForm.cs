@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Diagnostics;
 using PuppeteerSharp;
 
 namespace TrackerUI
@@ -63,6 +64,27 @@ namespace TrackerUI
         private void NoticiasForm_Load(object sender, EventArgs e)
         {
             CargarNoticias();
+        }
+
+        public void listBoxNews_MouseClick(object sender, MouseEventArgs e)
+        {
+            string linkTitulo = listBoxNews.Items[listBoxNews.SelectedIndex].ToString();
+            linkTitulo = linkTitulo.ToLower();
+            linkTitulo = linkTitulo.Replace(" ", "-");
+            linkTitulo = "https://cnnespanol.cnn.com/video/" + linkTitulo + "/";
+            label1.Text = linkTitulo;
+        }
+
+        private void listBoxNews_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            string linkTitulo = listBoxNews.Items[listBoxNews.SelectedIndex].ToString();
+            linkTitulo = linkTitulo.ToLower();
+            linkTitulo = linkTitulo.Replace(" ", "-");
+            linkTitulo = "https://cnnespanol.cnn.com/video/" + linkTitulo + "/";
+
+            var navegador = new ProcessStartInfo(@"C:\Program Files\Google\Chrome\Application\chrome.exe");
+            navegador.Arguments = linkTitulo;
+            Process.Start(navegador);
         }
     }
 }
