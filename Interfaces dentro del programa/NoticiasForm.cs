@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Diagnostics;
 using PuppeteerSharp;
+using HtmlAgilityPack;
+using ScrapySharp.Extensions;
+using HtmlDocument = HtmlAgilityPack.HtmlDocument;
 
 namespace TrackerUI
 {
@@ -66,24 +69,33 @@ namespace TrackerUI
             CargarNoticias();
         }
 
-        public void listBoxNews_MouseClick(object sender, MouseEventArgs e)
-        {
-            string linkTitulo = listBoxNews.Items[listBoxNews.SelectedIndex].ToString();
-            linkTitulo = linkTitulo.ToLower();
-            linkTitulo = linkTitulo.Replace(" ", "-");
-            linkTitulo = "https://cnnespanol.cnn.com/video/" + linkTitulo + "/";
-            label1.Text = linkTitulo;
-        }
-
         private void listBoxNews_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            string linkTitulo = listBoxNews.Items[listBoxNews.SelectedIndex].ToString();
-            linkTitulo = linkTitulo.ToLower();
-            linkTitulo = linkTitulo.Replace(" ", "-");
-            linkTitulo = "https://cnnespanol.cnn.com/video/" + linkTitulo + "/";
+            List<String> url = new List<String>();
+            HtmlWeb oWeb = new HtmlWeb();
+            HtmlDocument doc = oWeb.Load("https://cnnespanol.cnn.com/seccion/tecnologia/");
+
+
+            foreach (var Nodo in doc.DocumentNode.CssSelect(".news__title"))
+            {
+
+                var NodoAnchor = Nodo.CssSelect("a").FirstOrDefault();
+                String linkCrudo = NodoAnchor.OuterHtml;
+                String[] link = linkCrudo.Split(' ');
+
+                string linkFinal = link[1];
+
+                string searchString = "https";
+                int startIndex = linkFinal.IndexOf(searchString);
+                searchString = "https" + searchString.Substring(1);
+                int endIndex = linkFinal.Length + 1;
+                String substring = linkFinal.Substring(startIndex, endIndex - searchString.Length);
+                url.Add(substring);
+
+            }
 
             var navegador = new ProcessStartInfo(@"C:\Program Files\Google\Chrome\Application\chrome.exe");
-            navegador.Arguments = linkTitulo;
+            navegador.Arguments = url.ElementAt(listBoxNews.SelectedIndex);
             Process.Start(navegador);
         }
     }
